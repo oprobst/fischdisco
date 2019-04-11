@@ -115,65 +115,46 @@ void loop() {
 
   if (loopCount ++ > 10) {
     updateLEDs(timeToPercentage ());
+    updateDisplay();
     loopCount = 0;
   }
 
-  delay (10);
+  delay (100);
 }
 
 // Developed with two screaming kids on board, no quality promised...
 void updateLEDs(int time) {
   int inBetween = 0;
-  if (time > hourP[6] && time <= hourP[7] ) { // 7-8
-    setBrightness(PIN_PWM_BLUE, calcValue (6, 7, 0 , 6, time));
+  if (time > hourP[0] && time <= hourP[7] ) { // 0-8
+    setBrightness(PIN_PWM_BLUE, calcValue (6, 7, 1 , 1, time));
     setBrightness(PIN_PWM_WWHITE, calcValue (6, 7, 0, 0, time));
     setBrightness(PIN_PWM_CWHITE, calcValue (6, 7, 0, 0, time));
   } else if (time > hourP[7] && time <= hourP[8] ) { // 8-9
-    setBrightness(PIN_PWM_BLUE, calcValue (7, 8, 6, 12, time));
-    setBrightness(PIN_PWM_WWHITE, calcValue (7, 8, 0, 15, time));
-    setBrightness(PIN_PWM_CWHITE, calcValue (7, 8, 0, 0, time));
+    setBrightness(PIN_PWM_BLUE, calcValue (7, 8, 1, 50, time));
+    setBrightness(PIN_PWM_WWHITE, calcValue (7, 8, 0, 50, time));
+    setBrightness(PIN_PWM_CWHITE, calcValue (7, 8, 0, 50, time));
   } else  if (time > hourP[8] && time <= hourP[9] ) { // 8-9
-    setBrightness(PIN_PWM_BLUE, calcValue (8, 9, 12, 20, time));
-    setBrightness(PIN_PWM_WWHITE, calcValue (8, 9, 15, 75, time));
-    setBrightness(PIN_PWM_CWHITE, calcValue (8, 9, 0, 0, time));
-  } else if (time > hourP[9] && time <= hourP[10] ) { // 9-10
-    setBrightness(PIN_PWM_BLUE, calcValue (9, 10, 20, 10, time));
-    setBrightness(PIN_PWM_WWHITE, calcValue (9, 10, 75, 99, time));
-    setBrightness(PIN_PWM_CWHITE, calcValue (9, 10, 0, 0, time));
-  } else if (time > hourP[10] && time <= hourP[11]) { // 10-11
-    setBrightness(PIN_PWM_BLUE, calcValue (10, 11, 10, 0, time));
-    setBrightness(PIN_PWM_WWHITE, calcValue (10, 11, 99, 99, time));
-    setBrightness(PIN_PWM_CWHITE, calcValue (10, 11, 0, 50, time));
-  } else if (time > hourP[11] && time <= hourP[12] ) { // 11-12
-    setBrightness(PIN_PWM_BLUE, calcValue (11, 12, 0, 0, time));
-    setBrightness(PIN_PWM_WWHITE, calcValue (11, 12, 99, 99, time));
-    setBrightness(PIN_PWM_CWHITE, calcValue (11, 12, 50, 99, time));
-  } else if (time > hourP[12] && time <= hourP[18] ) { // 12-18
-    setBrightness(PIN_PWM_BLUE, calcValue (12, 18, 0, 0, time));
-    setBrightness(PIN_PWM_WWHITE, calcValue (12, 18, 99, 99, time));
-    setBrightness(PIN_PWM_CWHITE, calcValue (12, 18, 99, 99, time));
-  } else if (time > hourP[18] && time <= hourP[19] ) { // 18-19
-    setBrightness(PIN_PWM_BLUE, calcValue (18, 19, 0, 0, time));
-    setBrightness(PIN_PWM_WWHITE, calcValue (18, 19, 99, 80, time));
-    setBrightness(PIN_PWM_CWHITE, calcValue (18, 19, 99, 65, time));
-  } else if (time > hourP[19] && time <= hourP[20] ) { // 19-20
-    setBrightness(PIN_PWM_BLUE, calcValue (19, 20, 0, 5, time));
-    setBrightness(PIN_PWM_WWHITE, calcValue (19, 20, 80, 50, time));
-    setBrightness(PIN_PWM_CWHITE, calcValue (19, 20, 65, 30, time));
+    setBrightness(PIN_PWM_BLUE, calcValue (8, 9, 50, 99, time));
+    setBrightness(PIN_PWM_WWHITE, calcValue (8, 9, 50, 99, time));
+    setBrightness(PIN_PWM_CWHITE, calcValue (8, 9, 50, 99, time));
+  } else if (time > hourP[9] && time <= hourP[20] ) { // 9-20
+    setBrightness(PIN_PWM_BLUE, calcValue (9, 10, 99, 99, time));
+    setBrightness(PIN_PWM_WWHITE, calcValue (9, 10, 99, 99, time));
+    setBrightness(PIN_PWM_CWHITE, calcValue (9, 10, 99, 99, time));  
   } else if (time > hourP[20] && time <= hourP[21] ) { // 20-21
-    setBrightness(PIN_PWM_BLUE, calcValue (20, 21, 5, 35, time));
-    setBrightness(PIN_PWM_WWHITE, calcValue (20, 21, 50, 25, time));
-    setBrightness(PIN_PWM_CWHITE, calcValue (20, 21, 30, 0, time));
+    setBrightness(PIN_PWM_BLUE, calcValue (20, 21, 99, 50, time));
+    setBrightness(PIN_PWM_WWHITE, calcValue (20, 21, 99, 50, time));
+    setBrightness(PIN_PWM_CWHITE, calcValue (20, 21, 99, 50, time));
   } else if (time > hourP[21] && time <= hourP[22]) { // 21-22
-    setBrightness(PIN_PWM_BLUE, calcValue (21, 22, 35, 55, time));
-    setBrightness(PIN_PWM_WWHITE, calcValue (21, 22, 25, 5, time));
-    setBrightness(PIN_PWM_CWHITE, calcValue (21, 22, 0, 0, time));
+    setBrightness(PIN_PWM_BLUE, calcValue (21, 22, 50, 40, time));
+    setBrightness(PIN_PWM_WWHITE, calcValue (21, 22, 50, 0, time));
+    setBrightness(PIN_PWM_CWHITE, calcValue (21, 22, 50, 0, time));
   } else if (time > hourP[22] && time <= hourP[23]) { // 22-23
-    setBrightness(PIN_PWM_BLUE, calcValue (22, 23, 55, 8, time));
-    setBrightness(PIN_PWM_WWHITE, calcValue (22, 23, 5, 0, time));
+    setBrightness(PIN_PWM_BLUE, calcValue (22, 23, 40, 1, time));
+    setBrightness(PIN_PWM_WWHITE, calcValue (22, 23, 0, 0, time));
     setBrightness(PIN_PWM_CWHITE, calcValue (22, 23, 0, 0, time));
   } else if (time > hourP[23]  ) { // 23-24
-    setBrightness(PIN_PWM_BLUE, calcValue (23, 24, 8, 0, time));
+    setBrightness(PIN_PWM_BLUE, calcValue (23, 24, 1, 1, time));
     setBrightness(PIN_PWM_WWHITE, calcValue (23, 24, 0, 0, time));
     setBrightness(PIN_PWM_CWHITE, calcValue (23, 24, 0, 0, time));
 
@@ -428,4 +409,3 @@ byte decToBcd(byte val) {
 byte bcdToDec(byte val) {
   return ((val / 16 * 10) + (val % 16));
 }
-
